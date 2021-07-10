@@ -25,13 +25,24 @@ router.post('/', (req, res) => {
       res.sendStatus(201)
       return null
     })
-    .catch(err => {
-      console.log(err)
+    .catch((err) => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })
 
 // PATCH /api/v1/todos
-// db.editTodo()
+router.patch('/', (req, res) => {
+  const { id, title, description, priority, complete } = req.body
+  const updatedTodo = { id, title, description, priority, complete }
+  db.editTodo(updatedTodo)
+    .then(() => {
+      res.sendStatus(200)
+      return null
+    })
+    .catch((err) => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
 
 // DELETE /api/v1/todos
 // db.deleteTodo()
