@@ -1,6 +1,7 @@
 import {
   getTodosApi,
-  deleteTodoApi
+  deleteTodoApi,
+  postTodoApi
 } from '../apis/todosClientApi'
 
 export const GETTODOS = 'GETTODOS'
@@ -15,12 +16,12 @@ export function getAction (todos) {
   }
 }
 
-// export function addAction (todo) {
-//   return {
-//     type: ADDTODO,
-//     todo
-//   }
-// }
+export function addAction (todo) {
+  return {
+    type: ADDTODO,
+    todo
+  }
+}
 
 // export function updateAction (id) {
 //   return {
@@ -47,8 +48,13 @@ export function fetchTodos () {
 }
 
 export function deleteTodo (id) {
-  console.log(id)
   return dispatch => {
     return deleteTodoApi(id)
+  }
+}
+
+export function addTodo (todo) {
+  return dispatch => {
+    return postTodoApi(todo)
   }
 }
