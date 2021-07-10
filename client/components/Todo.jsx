@@ -1,10 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { deleteTodo } from '../actions/todosActions'
+import { deleteTodo, updateTodo } from '../actions/todosActions'
 
 function Todo (props) {
   function onChangeHandler () {
-    // props.dispatch(updateTodo({}))
+    props.dispatch(updateTodo({
+      id: props.id,
+      title: props.title,
+      complete: !props.complete
+    }))
   }
   function clickDelete (e) {
     const id = e.target.value
