@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import AddTodo from './AddTodo'
+import TodosList from './TodosList'
+import Footer from './Footer'
 
 function App () {
   useEffect(() => {
@@ -9,11 +11,15 @@ function App () {
   return (
     <>
       <header className="header">
-        <h1>todos</h1>
+        <h1>todos by Kris</h1>
         <AddTodo />
       </header>
-      <section className="main"></section>
-      <footer className="footer"></footer>
+      <section className="main">
+        <TodosList/>
+      </section>
+      <footer className="footer">
+        <Footer />
+      </footer>
     </>
   )
 }
