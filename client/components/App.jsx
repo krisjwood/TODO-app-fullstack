@@ -1,21 +1,35 @@
 import React, { useEffect } from 'react'
 import AddTodo from './AddTodo'
+import TodosList from './TodosList'
+import Footer from './Footer'
+import { connect } from 'react-redux'
+import { fetchTodos } from '../actions/todosActions'
 
-function App () {
+function App (props) {
   useEffect(() => {
-
+    props.dispatch(fetchTodos())
   }, [])
 
   return (
     <>
       <header className="header">
-        <h1>todos</h1>
+        <h1>todos by Kris</h1>
         <AddTodo />
       </header>
-      <section className="main"></section>
-      <footer className="footer"></footer>
+      <section className="main">
+        <TodosList/>
+      </section>
+      <footer className="footer">
+        <Footer />
+      </footer>
     </>
   )
 }
 
-export default App
+function mapStateToProps (state) {
+  return {
+    todos: state.todos
+  }
+}
+
+export default connect(mapStateToProps)(App)
