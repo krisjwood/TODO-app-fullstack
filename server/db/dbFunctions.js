@@ -35,4 +35,9 @@ function editTodo (updatedTodo, db = connection) {
     })
 }
 
-function deleteTodo (db = connection) {}
+function deleteTodo (id, db = connection) {
+  const numId = Number(id)
+  return db('todos')
+    .where('id', numId)
+    .del()
+}

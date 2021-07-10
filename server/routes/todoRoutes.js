@@ -45,4 +45,14 @@ router.patch('/', (req, res) => {
 })
 
 // DELETE /api/v1/todos
-// db.deleteTodo()
+router.delete('/', (req, res) => {
+  const { id } = req.body
+  db.deleteTodo(id)
+    .then(() => {
+      res.sendStatus(200)
+      return null
+    })
+    .catch((err) => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
