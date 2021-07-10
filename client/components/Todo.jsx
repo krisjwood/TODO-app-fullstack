@@ -1,14 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import deleteTodo from './actions/todosActions'
+import { deleteTodo } from '../actions/todosActions'
 
 function Todo (props) {
   function onChangeHandler () {} // do something with this? Helped get rid of a checked warning in console
 
   function clickDelete (e) {
     const id = e.target.value
-    console.log(id)
-    props.dispatch(deleteTodo())
+    props.dispatch(deleteTodo({ id: id }))
   }
   return (
     <>

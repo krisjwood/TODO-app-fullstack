@@ -47,6 +47,7 @@ export function fetchTodos () {
 }
 
 export function deleteTodo (id) {
+  console.log(id)
   return dispatch => {
     return deleteTodoApi(id)
   }
