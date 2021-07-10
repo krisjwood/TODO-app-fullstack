@@ -3,9 +3,11 @@ import AddTodo from './AddTodo'
 import TodosList from './TodosList'
 import Footer from './Footer'
 import { connect } from 'react-redux'
+import { fetchTodos } from '../actions/todosActions'
 
-function App () {
+function App (props) {
   useEffect(() => {
+    props.dispatch(fetchTodos())
   }, [])
 
   return (

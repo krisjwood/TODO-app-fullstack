@@ -1,25 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import deleteTodo from './actions/todosActions'
 
 function Todo (props) {
-  console.log('props', props)
+  function onChangeHandler () {} // do something with this? Helped get rid of a checked warning in console
+
+  function clickDelete (e) {
+    const id = e.target.value
+    console.log(id)
+    props.dispatch(deleteTodo())
+  }
   return (
     <>
-      <li className="completed">
+      <li className={props.complete ? 'completed' : ''}>
         <div className="view">
-          <input className="toggle" type="checkbox" checked />
-          <label>Taste JavaScript</label>
-          <button className="destroy"></button>
+          <input className="toggle" type="checkbox" checked={props.complete} onChange={onChangeHandler} />
+          <label>{props.title}</label>
+          <button className="destroy" onClick={clickDelete} value={props.id}></button>
         </div>
-        <input className="edit" value="Create a TodoMVC template" />
-      </li>
-      <li>
-        <div className="view">
-          <input className="toggle" type="checkbox" />
-          <label>Buy a unicorn</label>
-          <button className="destroy"></button>
-        </div>
-        <input className="edit" value="Rule the web" />
+        <input className="edit" />
       </li>
     </>
   )

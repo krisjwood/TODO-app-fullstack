@@ -2,7 +2,7 @@ import {
   GETTODOS
 } from '../actions/todosActions'
 
-function todosReducer (state = [], action) {
+function todos (state = [], action) {
   switch (action.type) {
     case GETTODOS:
       return action.todos
@@ -17,4 +17,4 @@ function todosReducer (state = [], action) {
   }
 }
 
-export default todosReducer
+export default todos

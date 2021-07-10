@@ -2,27 +2,27 @@ import request from 'superagent'
 
 const routeUrl = '/api/v1/todos'
 
-export function getTodos () {
+export function getTodosApi () {
   return request
     .get(routeUrl)
     .then((res) => res.body)
 }
 
-export function postTodo (todo) {
+export function postTodoApi (todo) {
   return request
     .post(routeUrl)
     .send(todo)
     .then((res) => res.body)
 }
 
-export function patchTodo (todo) {
+export function patchTodoApi (todo) {
   return request
     .patch(routeUrl)
     .send(todo)
     .then((res) => res.body)
 }
 
-export function deleteTodo (id) {
+export function deleteTodoApi (id) {
   return request
     .delete(routeUrl)
     .send(id)

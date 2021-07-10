@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react'
-import { fetchTodos } from '../actions/todosActions'
+import React from 'react'
 import Todo from './Todo'
 import { connect } from 'react-redux'
 
 function TodoList (props) {
-  useEffect(() => {
-    props.dispatch(fetchTodos())
-  }, [])
-
+  const todos = props.todos
   return (
     <>
       {/* <!-- This section should be hidden by default and shown when there are todos --> */}
@@ -17,7 +13,16 @@ function TodoList (props) {
         <ul className="todo-list">
           {/* <!-- These are here just to show the structure of the list items --> */}
           {/* <!-- List items should get the class `editing` when editing and `completed` when marked as completed --> */}
-          <Todo />
+          {todos.map(todo =>
+            <Todo
+              key={todo.id}
+              id={todo.id}
+              title={todo.title}
+              description={todo.description}
+              priority={todo.priority}
+              complete={todo.complete}
+            />
+          )}
         </ul>
       </section>
       <footer className="footer">
