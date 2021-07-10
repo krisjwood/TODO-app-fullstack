@@ -23,7 +23,6 @@ function addTodo (todo, db = connection) {
 }
 
 function editTodo (updatedTodo, db = connection) {
-  console.log(updatedTodo)
   const { id, title, description, priority, complete } = updatedTodo
   return db('todos')
     .where('id', id)

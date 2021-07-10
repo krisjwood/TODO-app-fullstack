@@ -10,9 +10,8 @@ function Todo (props) {
       complete: !props.complete
     }))
   }
-  function clickDelete (e) {
-    const id = e.target.value
-    props.dispatch(deleteTodo({ id: id }))
+  function clickDelete () {
+    props.dispatch(deleteTodo({ id: props.id }))
   }
   return (
     <>
@@ -20,7 +19,7 @@ function Todo (props) {
         <div className="view">
           <input className="toggle" type="checkbox" checked={props.complete} onChange={onChangeHandler} value={props.id} />
           <label>{props.title}</label>
-          <button className="destroy" onClick={clickDelete} value={props.id}></button>
+          <button className="destroy" onClick={clickDelete}></button>
         </div>
         <input className="edit" />
       </li>
