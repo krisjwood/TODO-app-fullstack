@@ -11,15 +11,27 @@ router.get('/', (req, res) => {
       return null
     })
     .catch((err) => {
-      res.status(500).send('DATABASE ERROR: ', err.message)
+      res.status(500).send('GET DATABASE ERROR: ', err.message)
     })
 })
 
 // POST /api/v1/todos
-db.addTodo()
+router.post('/', (req, res) => {
+  const { title, description, priority, complete } = req.body
+  const todo = { title, description, priority, complete }
+
+  db.addTodo(todo)
+    .then(() => {
+      res.sendStatus(201)
+      return null
+    })
+    .catch(err => {
+      console.log(err)
+    })
+})
 
 // PATCH /api/v1/todos
-db.editTodo()
+// db.editTodo()
 
 // DELETE /api/v1/todos
-db.deleteTodo()
+// db.deleteTodo()
