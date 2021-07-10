@@ -9,6 +9,11 @@ function TodoList (props) {
     props.dispatch(fetchTodos())
   }, [todos])
 
+  function activeTodos () {
+    const activeTodos = todos.filter(todo => todo.complete === 0)
+    return activeTodos.length
+  }
+
   return (
     <>
       {/* <!-- This section should be hidden by default and shown when there are todos --> */}
@@ -32,7 +37,7 @@ function TodoList (props) {
       </section>
       <footer className="footer">
         {/* <!-- This should be `0 items left` by default --> */}
-        <span className="todo-count"><strong>0</strong> item left</span>
+        <span className="todo-count"><strong>{activeTodos()}</strong> item left</span>
         {/* <!-- Remove this if you don't implement routing --> */}
         <ul className="filters">
           <li>
