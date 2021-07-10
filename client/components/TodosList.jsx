@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { fetchTodos } from '../actions/todosActions'
 import Todo from './Todo'
+import { connect } from 'react-redux'
 
 function TodoList (props) {
+  useEffect(() => {
+    props.dispatch(fetchTodos())
+  }, [])
+
   return (
     <>
       {/* <!-- This section should be hidden by default and shown when there are todos --> */}
@@ -36,4 +42,10 @@ function TodoList (props) {
   )
 }
 
-export default TodoList
+function mapStateToProps (state) {
+  return {
+    todos: state.todos
+  }
+}
+
+export default connect(mapStateToProps)(TodoList)

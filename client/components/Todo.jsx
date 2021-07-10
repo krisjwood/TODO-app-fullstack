@@ -1,6 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-function TodoList (props) {
+function Todo (props) {
+  console.log('props', props)
   return (
     <>
       <li className="completed">
@@ -23,4 +25,10 @@ function TodoList (props) {
   )
 }
 
-export default TodoList
+function mapStateToProps (state) {
+  return {
+    todos: state.todos
+  }
+}
+
+export default connect(mapStateToProps)(Todo)

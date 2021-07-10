@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import AddTodo from './AddTodo'
 import TodosList from './TodosList'
 import Footer from './Footer'
+import { connect } from 'react-redux'
 
 function App () {
   useEffect(() => {
-
   }, [])
 
   return (
@@ -24,4 +24,10 @@ function App () {
   )
 }
 
-export default App
+function mapStateToProps (state) {
+  return {
+    todos: state.todos
+  }
+}
+
+export default connect(mapStateToProps)(App)

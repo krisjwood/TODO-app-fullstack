@@ -1,45 +1,46 @@
-export const PENDING = 'PENDING'
-export const SUCCESS = 'SUCCESS'
+import {
+  getTodos
+} from '../apis/todosClientApi'
+
 export const GETTODOS = 'GETTODOS'
 export const ADDTODO = 'ADDTODO'
 export const UPDATETODO = 'UPDATETODO'
 export const DELETETODO = 'DELETETODO'
 
-export function pending () {
+export function getAction (todos) {
   return {
-    type: PENDING
+    type: GETTODOS,
+    todos
   }
 }
 
-export function success () {
-  return {
-    type: SUCCESS
-  }
-}
+// export function addAction (todo) {
+//   return {
+//     type: ADDTODO,
+//     todo
+//   }
+// }
 
-export function getTodos () {
-  return {
-    type: GETTODOS
-  }
-}
+// export function updateAction (id) {
+//   return {
+//     type: UPDATETODO,
+//     id
+//   }
+// }
 
-export function addTodo (todo) {
-  return {
-    type: ADDTODO,
-    todo
-  }
-}
+// export function deleteAction (id) {
+//   return {
+//     type: DELETETODO,
+//     id
+//   }
+// }
 
-export function updateTodo (id) {
-  return {
-    type: UPDATETODO,
-    id
-  }
-}
-
-export function deleteTodo (id) {
-  return {
-    type: DELETETODO,
-    id
+export function fetchTodos () {
+  return dispatch => {
+    return getTodos()
+      .then(todos => {
+        dispatch(getAction(todos))
+        return null
+      })
   }
 }

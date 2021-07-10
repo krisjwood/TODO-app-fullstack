@@ -1,20 +1,19 @@
 import {
-  GETTODOS,
-  ADDTODO,
-  UPDATETODO,
-  DELETETODO
+  GETTODOS
 } from '../actions/todosActions'
 
 function todosReducer (state = [], action) {
   switch (action.type) {
     case GETTODOS:
-      return null
-    case ADDTODO:
-      return null
-    case UPDATETODO:
-      return null
-    case DELETETODO:
-      return null
+      return action.todos
+    // case ADDTODO:
+    //   return addTodo()
+    // case UPDATETODO:
+    //   return updateTodo()
+    // case DELETETODO:
+    //   return state.filter(todo => todo.id !== action.id)
+    default:
+      return state
   }
 }
 
