@@ -3,22 +3,26 @@ import { connect } from 'react-redux'
 import { deleteTodo, updateTodo } from '../actions/todosActions'
 
 function Todo (props) {
+  const { id, complete, title } = props
+  const todo = { id, complete, title }
+
   function onChangeHandler () {
     props.dispatch(updateTodo({
-      id: props.id,
-      title: props.title,
-      complete: !props.complete
+      ...todo,
+      complete: !complete
     }))
   }
+
   function clickDelete () {
-    props.dispatch(deleteTodo({ id: props.id }))
+    props.dispatch(deleteTodo({ id }))
   }
+
   return (
     <>
-      <li className={props.complete ? 'completed' : ''}>
+      <li className={complete ? 'completed' : ''}>
         <div className="view">
-          <input className="toggle" type="checkbox" checked={props.complete} onChange={onChangeHandler} value={props.id} />
-          <label>{props.title}</label>
+          <input className="toggle" type="checkbox" checked={complete} onChange={onChangeHandler} value={id} />
+          <label>{title}</label>
           <button className="destroy" onClick={clickDelete}></button>
         </div>
         <input className="edit" />

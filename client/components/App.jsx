@@ -8,7 +8,7 @@ import { fetchTodos } from '../actions/todosActions'
 function App (props) {
   useEffect(() => {
     props.dispatch(fetchTodos())
-  }, [])
+  }, [props])
 
   return (
     <>

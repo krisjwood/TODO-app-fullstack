@@ -4,15 +4,15 @@ import { connect } from 'react-redux'
 import { fetchTodos } from '../actions/todosActions'
 
 function TodoList (props) {
+  // const { todos, setTodos } = useState(props.todos)
   const todos = props.todos
+
+  function activeTodoCount () {
+    return todos.filter(todo => todo.complete === 0).length
+  }
   useEffect(() => {
     props.dispatch(fetchTodos())
-  }, [todos])
-
-  function activeTodos () {
-    const activeTodos = todos.filter(todo => todo.complete === 0)
-    return activeTodos.length
-  }
+  }, [])
 
   return (
     <>
@@ -37,7 +37,7 @@ function TodoList (props) {
       </section>
       <footer className="footer">
         {/* <!-- This should be `0 items left` by default --> */}
-        <span className="todo-count"><strong>{activeTodos()}</strong> item left</span>
+        <span className="todo-count"><strong>{activeTodoCount()}</strong> item left</span>
         {/* <!-- Remove this if you don't implement routing --> */}
         {/* <ul className="filters">
           <li>
